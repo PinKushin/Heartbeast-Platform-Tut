@@ -4,10 +4,54 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
-  <sprites name="sprites"/>
-  <backgrounds name="background"/>
+  <sounds name="sound">
+    <sound>sound\aBat</sound>
+    <sound>sound\aExit</sound>
+    <sound>sound\aJump</sound>
+    <sound>sound\aOuch</sound>
+    <sound>sound\aSnake</sound>
+    <sound>sound\aSpider</sound>
+    <sound>sound\aStep</sound>
+    <sound>sound\aTink</sound>
+  </sounds>
+  <sprites name="sprites">
+    <sprites name="Player">
+      <sprite>sprites\sPlayerExit</sprite>
+      <sprite>sprites\sPlayerIdle</sprite>
+      <sprite>sprites\sPlayerMask</sprite>
+      <sprite>sprites\sPlayerWalk</sprite>
+      <sprite>sprites\sPlayerJump</sprite>
+      <sprite>sprites\sPlayerGrab</sprite>
+      <sprite>sprites\SPlayerDamage</sprite>
+    </sprites>
+    <sprites name="Enemys">
+      <sprite>sprites\sBatIdle</sprite>
+      <sprite>sprites\sBatFly</sprite>
+      <sprite>sprites\sEnemyMask</sprite>
+      <sprite>sprites\sSnake</sprite>
+      <sprite>sprites\sSpider</sprite>
+      <sprite>sprites\sBoss</sprite>
+    </sprites>
+    <sprites name="GUI">
+      <sprite>sprites\sGuiSaphire</sprite>
+      <sprite>sprites\sHeart</sprite>
+    </sprites>
+    <sprites name="Effects">
+      <sprite>sprites\sBlood</sprite>
+      <sprite>sprites\sFireBubble</sprite>
+      <sprite>sprites\sSaphireChunk</sprite>
+    </sprites>
+  </sprites>
+  <backgrounds name="background">
+    <background>background\bMenu</background>
+    <background>background\bDirt</background>
+  </backgrounds>
   <paths name="paths"/>
+  <objects name="objects">
+    <objects name="Player">
+      <object>objects\oPlayer</object>
+    </objects>
+  </objects>
   <help>
     <rtf>help.rtf</rtf>
   </help>
