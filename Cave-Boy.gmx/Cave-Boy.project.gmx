@@ -51,6 +51,15 @@
     <background>background\bDirt</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <scripts name="Helpers">
+      <script>scripts\move.gml</script>
+    </scripts>
+    <scripts name="Player States">
+      <script>scripts\move_state.gml</script>
+    </scripts>
+    <script>scripts\pause_state.gml</script>
+  </scripts>
   <objects name="objects">
     <objects name="Player">
       <object>objects\oPlayer</object>

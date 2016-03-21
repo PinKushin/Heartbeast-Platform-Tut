@@ -26,10 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>///Initialise Player Variables
-spd = 5;
+spd = 150 / room_speed;
 hspd = 0;
 vspd = 0;
 grav = 1.5;
+state = move_state;
 
 </string>
           </argument>
@@ -53,56 +54,36 @@ grav = 1.5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Control Player
-var right = keyboard_check (ord ( "D"));
-var left = keyboard_check (ord ( "A"));
-var up = keyboard_check (vk_space);
-var uprelease = keyboard_check_released (vk_space)
-
-if !place_meeting (x, y + 1, oSolid) {
-    vspd += grav;
-    
-    //Control Jump height
-    if uprelease &amp;&amp; vspd &lt; -6 {
-        vspd = -4;
-    }
+            <string>///Control Player states
+script_execute(state)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="96">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///change the state
+if state == pause_state{
+    state = move_state;
 }else{
-    vspd = 0;
-    /// Jump Code
-        if up {
-        vspd = -10
-    }
+    state = pause_state;
 }
-
-if  left {
-    hspd = -spd;
-}
-if  right {
-    hspd = spd;
-}
-//Friction
-if !right &amp;&amp; !left {
-    hspd = 0
-}
-
-//Horizontal collisions
-if place_meeting (x + hspd, y, oSolid){
-    while !place_meeting (x + sign (hspd), y, oSolid) {
-        x += sign (hspd);
-    }
-    hspd = 0;
-}
-x += hspd;
-
-
-//Vertical collisions
-if place_meeting (x, y + vspd, oSolid){
-     while !place_meeting (x , y+ sign (vspd), oSolid) {
-        y += sign (vspd);
-    }
-    vspd = 0
-}
-y += vspd;
 </string>
           </argument>
         </arguments>
