@@ -54,11 +54,25 @@
   <scripts name="scripts">
     <scripts name="Helpers">
       <script>scripts\move.gml</script>
+      <script>scripts\horizontalmovebounce.gml</script>
+      <script>scripts\applyfriction.gml</script>
     </scripts>
     <scripts name="Player States">
       <script>scripts\move_state.gml</script>
+      <script>scripts\ledge_grab_state.gml</script>
     </scripts>
-    <script>scripts\pause_state.gml</script>
+    <scripts name="Snake States">
+      <script>scripts\snakemoveright.gml</script>
+      <script>scripts\snakemoveleft.gml</script>
+    </scripts>
+    <scripts name="Bat States">
+      <script>scripts\batidle.gml</script>
+      <script>scripts\batchase.gml</script>
+    </scripts>
+    <scripts name="Spider Scripts">
+      <script>scripts\spideridle.gml</script>
+      <script>scripts\spiderjump.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <objects name="Player">
@@ -67,6 +81,11 @@
     <objects name="Level">
       <object>objects\oSolid</object>
       <object>objects\oDirt</object>
+    </objects>
+    <objects name="Enemys">
+      <object>objects\oSnake</object>
+      <object>objects\oBat</object>
+      <object>objects\oSpider</object>
     </objects>
   </objects>
   <rooms name="rooms">
