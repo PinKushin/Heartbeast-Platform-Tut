@@ -41,6 +41,10 @@
       <sprite>sprites\sFireBubble</sprite>
       <sprite>sprites\sSaphireChunk</sprite>
     </sprites>
+    <sprites name="Level">
+      <sprite>sprites\sSolid</sprite>
+      <sprite>sprites\sDirt</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bMenu</background>
@@ -51,7 +55,14 @@
     <objects name="Player">
       <object>objects\oPlayer</object>
     </objects>
+    <objects name="Level">
+      <object>objects\oSolid</object>
+      <object>objects\oDirt</object>
+    </objects>
   </objects>
+  <rooms name="rooms">
+    <room>rooms\rOne</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
