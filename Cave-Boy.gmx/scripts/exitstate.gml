@@ -16,10 +16,10 @@ if image_alpha > 0 {
         //a new highscore case
         if score > oPlayerStats.highscore {
              oPlayerStats.highscore = score;
-             ini_write_real ("score", "highscore", oPlayerStats.highscore)
+             ini_write_real ("score", "highscore", oPlayerStats.highscore);
         }
         //if new besttime case
-        if oPlayerStats.time / room_speed < oPlayerStats.besttime {
+        if oPlayerStats.time / room_speed <= oPlayerStats.besttime / room_speed {
             oPlayerStats.besttime = oPlayerStats.time;
             ini_write_real ("score", "besttime", oPlayerStats.besttime);
         }

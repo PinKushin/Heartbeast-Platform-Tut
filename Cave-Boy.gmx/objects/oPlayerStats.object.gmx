@@ -35,7 +35,7 @@ sapphires = 0;
 score = 0;
 highscore = 0;
 time = 0;
-besttime = 9999;
+besttime = 0;
 </string>
           </argument>
         </arguments>
@@ -65,8 +65,11 @@ if gamepad_is_connected (0) {
     start = gamepad_button_check_pressed (0, gp_start)
 }
 
-if start == true &amp;&amp; room == rMenu{
-    room_goto (rOne)
+if start == true &amp;&amp; room == rMenu {
+    room_goto (rOne);
+}
+if start == true &amp;&amp; room == rHighScore {
+    game_restart ();
 }
 </string>
           </argument>
@@ -189,24 +192,25 @@ switch room {
     case rHighScore:
         var pscore = "Your Score Was: " + string (score);
         var hscore = "The High Scores is:" + string (highscore);
-        var ptime = "Your Time Was:" + string (time/room_speed);
-        var htime = "Best Time:" + string (besttime/room_speed);
+        var ptime = "Your Time Was:" + string (time / room_speed);
+        var htime = "The Best Time:" + string (besttime / room_speed);
         
+        draw_set_font (fTimer);
         draw_set_halign (fa_center);
         draw_text_color (room_width / 2, 64 + 16, pscore, c_white, c_white, c_white, c_white, 1);
         draw_text_color (room_width / 2, 96 + 16, hscore, c_white, c_white, c_white, c_white, 1);
         draw_text_color (room_width / 2, 128 + 16, ptime, c_white, c_white, c_white, c_white, 1);
-        draw_text_color (room_width / 2, 192, htime, c_white, c_white, c_white, c_white, 1);
+        draw_text_color (room_width / 2, 176, htime, c_white, c_white, c_white, c_white, 1);
         
         break;
     default:
         //draw the heart spaces
-        for (var i = 0; i&lt;maxhp; i++) {
+        for (var i = 0; i &lt; maxhp; i++) {
             draw_sprite_ext (sHeart, 0, 24 + i * 36, 20, 1, 1, 0, c_black, .5);
         }
         
         //draw the hearts
-        for (var i = 0; i&lt;hp; i++) {
+        for (var i = 0; i &lt; hp; i++) {
             draw_sprite_ext (sHeart, 0, 24 + i * 36, 20, 1, 1, 0, c_white, 1);
         }
         //draw the Sapphires
