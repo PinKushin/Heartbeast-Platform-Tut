@@ -1,4 +1,4 @@
-///batchase
+///batchase()
 if instance_exists (oPlayer) {
     var dir = point_direction (x, y, oPlayer.x, oPlayer.y);
     hspd = lengthdir_x (spd, dir);

@@ -1,4 +1,4 @@
-///batidle
+///batidle()
 sprite_index = sBatIdle;
 
 ///look for player

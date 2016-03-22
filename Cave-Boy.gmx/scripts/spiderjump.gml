@@ -1,4 +1,4 @@
-///spiderjump
+///spiderjump()
 image_index = image_number - 1;
 
 //apply gravity

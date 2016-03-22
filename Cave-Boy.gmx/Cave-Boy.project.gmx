@@ -13,6 +13,7 @@
     <sound>sound\aSpider</sound>
     <sound>sound\aStep</sound>
     <sound>sound\aTink</sound>
+    <sound>sound\aTrackOne</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Player">
@@ -22,7 +23,7 @@
       <sprite>sprites\sPlayerWalk</sprite>
       <sprite>sprites\sPlayerJump</sprite>
       <sprite>sprites\sPlayerGrab</sprite>
-      <sprite>sprites\SPlayerDamage</sprite>
+      <sprite>sprites\sPlayerHurt</sprite>
     </sprites>
     <sprites name="Enemys">
       <sprite>sprites\sBatIdle</sprite>
@@ -33,17 +34,27 @@
       <sprite>sprites\sBoss</sprite>
     </sprites>
     <sprites name="GUI">
-      <sprite>sprites\sGuiSaphire</sprite>
+      <sprite>sprites\sSapphireGUI</sprite>
       <sprite>sprites\sHeart</sprite>
     </sprites>
-    <sprites name="Effects">
+    <sprites name="FX">
       <sprite>sprites\sBlood</sprite>
       <sprite>sprites\sFireBubble</sprite>
-      <sprite>sprites\sSaphireChunk</sprite>
+      <sprite>sprites\sSapphireChunk</sprite>
     </sprites>
     <sprites name="Level">
       <sprite>sprites\sSolid</sprite>
       <sprite>sprites\sDirt</sprite>
+      <sprite>sprites\sEntrance</sprite>
+      <sprite>sprites\sLava</sprite>
+      <sprite>sprites\sExit</sprite>
+      <sprite>sprites\sSapphire</sprite>
+      <sprite>sprites\sDirtTop</sprite>
+      <sprite>sprites\sDirtEdge</sprite>
+    </sprites>
+    <sprites name="Helper">
+      <sprite>sprites\sStats</sprite>
+      <sprite>sprites\sBack</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -54,12 +65,16 @@
   <scripts name="scripts">
     <scripts name="Helpers">
       <script>scripts\move.gml</script>
+      <script>scripts\damagebounce.gml</script>
       <script>scripts\horizontalmovebounce.gml</script>
       <script>scripts\applyfriction.gml</script>
+      <script>scripts\getinput.gml</script>
     </scripts>
     <scripts name="Player States">
       <script>scripts\move_state.gml</script>
       <script>scripts\ledge_grab_state.gml</script>
+      <script>scripts\hurtstate.gml</script>
+      <script>scripts\exitstate.gml</script>
     </scripts>
     <scripts name="Snake States">
       <script>scripts\snakemoveright.gml</script>
@@ -74,21 +89,43 @@
       <script>scripts\spiderjump.gml</script>
     </scripts>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fTitle</font>
+    <font>fonts\fStart</font>
+    <font>fonts\fTimer</font>
+  </fonts>
   <objects name="objects">
     <objects name="Player">
       <object>objects\oPlayer</object>
+      <object>objects\oPlayerStats</object>
     </objects>
     <objects name="Level">
       <object>objects\oSolid</object>
       <object>objects\oDirt</object>
+      <object>objects\oEntrance</object>
+      <object>objects\oExit</object>
+      <object>objects\oBackground</object>
+      <object>objects\oLava</object>
+      <object>objects\oSapphire</object>
     </objects>
     <objects name="Enemys">
+      <object>objects\oEnemyPar</object>
       <object>objects\oSnake</object>
       <object>objects\oBat</object>
       <object>objects\oSpider</object>
     </objects>
+    <objects name="FX">
+      <object>objects\oBlood</object>
+      <object>objects\oSapphireChunk</object>
+    </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rMenu</room>
+    <room>rooms\rHighScore</room>
+    <room>rooms\rTwo</room>
+    <room>rooms\rThree</room>
+    <room>rooms\rFour</room>
+    <room>rooms\rFive</room>
     <room>rooms\rOne</room>
   </rooms>
   <help>

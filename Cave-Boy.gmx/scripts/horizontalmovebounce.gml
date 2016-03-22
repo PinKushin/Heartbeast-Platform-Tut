@@ -1,4 +1,4 @@
-///horizontalmovebounce (collision_object)
+///horizontalmovebounce(collision_object)
 var collision_object = argument0
 
 //Horizontal collisions

@@ -3,7 +3,7 @@
   <spriteName>sPlayerIdle</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>sPlayerMask</maskName>
@@ -32,8 +32,10 @@ hspd = 0;
 vspd = 0;
 grav = 1.5;
 state = move_state;
+getinput();
 
-
+///create audio emitter
+audio_em = audio_emitter_create();
 </string>
           </argument>
         </arguments>
@@ -57,7 +59,124 @@ state = move_state;
           <argument>
             <kind>1</kind>
             <string>///Control Player states
-script_execute(state)
+getinput();
+script_execute(state);
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="oSapphire">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collect Sapphire
+oPlayerStats.sapphires += 1;
+with other {
+    instance_destroy ();
+    audio_play_sound (aTink, 4, false);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="oExit">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//goto next level
+if down {
+    y = yprevious;
+    state = exitstate;
+    audio_stop_sound (aJump);
+    audio_play_sound (aExit, 4, false);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="oEnemyPar">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collide with enemy
+var aboveenemy = y &lt; other.y + vspd;
+var falling = vspd &gt; 0;
+
+if aboveenemy &amp;&amp; (falling || state == ledge_grab_state) {
+    if !place_meeting (x, yprevious, oSolid) {
+        y = yprevious;;
+    }
+    while !place_meeting (x, y + 1, other) {
+        y++;
+    }
+    //kill the enemy
+    with other {
+        instance_destroy ();
+    }
+    //bounce off enemy
+    vspd = - (16 / 1.5);
+    audio_play_sound (aStep, 6, false);
+}else{
+    //take damage
+    if state != hurtstate {
+        audio_emitter_pitch (audio_em, 1.6);
+        audio_emitter_gain (audio_em, 1.4);
+        audio_play_sound_on (audio_em, aOuch, false, 8);
+        
+        image_blend = make_color_rgb (220, 150, 150);
+        vspd = -12;
+        hspd = sign (x - other.x) * 2;
+        
+        state = hurtstate;
+        move(oSolid);
+        if instance_exists (oPlayerStats) {
+            oPlayerStats.hp -= 1;
+        }
+    }
+}
 </string>
           </argument>
         </arguments>

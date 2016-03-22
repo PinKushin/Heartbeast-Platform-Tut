@@ -634,8 +634,9 @@
     <option_xbone_title_id></option_xbone_title_id>
   </Options>
   <ConfigConstants>
-    <constants number="1">
+    <constants number="2">
       <constant name="idle">0</constant>
+      <constant name="DEATH">0</constant>
     </constants>
   </ConfigConstants>
 </Config>

@@ -1,11 +1,4 @@
 ///move_state()
-
-///player control
-var right = keyboard_check (ord ("D"));
-var left = keyboard_check (ord ("A"));
-var up = keyboard_check_pressed (vk_space);
-var up_release = keyboard_check_released (vk_space)
-
 if !place_meeting (x, y+1, oSolid) {
     vspd += grav;
     
@@ -24,6 +17,7 @@ if !place_meeting (x, y+1, oSolid) {
     //Jump
     if up {
         vspd = -16;
+        audio_play_sound (aJump, 5, false);
     }
     
     //player on the ground
@@ -47,6 +41,14 @@ if right || left {
 if hspd !=0 {
     image_xscale = sign(hspd);
 }
+
+//play the landing sound
+if place_meeting (x, y + vspd + 1, oSolid) && vspd > 0 {
+    audio_emitter_pitch (audio_em, random_range (0.8, 1.2));
+    audio_emitter_gain (audio_em, 0.2);
+    audio_play_sound_on (audio_em, aStep, false, 6);
+}
+
 move(oSolid);
 
 ///Check for ledge grab state
@@ -64,9 +66,14 @@ if falling && wasnt_wall && is_wall {
     }
     //move to right height
     while position_meeting(x + 17 * image_xscale, y - 1, oSolid) {
-        y -= 1
+        y -= 1;
     }
     
     sprite_index = sPlayerGrab;
     state = ledge_grab_state;
+    
+    ///Play ledge grab sound
+    audio_emitter_pitch (audio_em, 1.5);
+    audio_emitter_gain (audio_em, 0.1);
+    audio_play_sound_on (audio_em, aStep, false, 6);
 }

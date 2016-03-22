@@ -1,4 +1,4 @@
-///spideridle
+///spideridle()
 if instance_exists (oPlayer) {
     var dis = distance_to_object (oPlayer);
     
