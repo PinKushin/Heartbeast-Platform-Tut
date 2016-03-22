@@ -122,11 +122,11 @@
   <rooms name="rooms">
     <room>rooms\rMenu</room>
     <room>rooms\rHighScore</room>
+    <room>rooms\rOne</room>
     <room>rooms\rTwo</room>
     <room>rooms\rThree</room>
     <room>rooms\rFour</room>
     <room>rooms\rFive</room>
-    <room>rooms\rOne</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
