@@ -67,7 +67,7 @@ script_execute(state);
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="oSapphire">
+    <event eventtype="4" ename="oBoss">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -84,41 +84,8 @@ script_execute(state);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Collect Sapphire
-oPlayerStats.sapphires += 1;
-with other {
-    instance_destroy ();
-    audio_play_sound (aTink, 4, false);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="oExit">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//goto next level
-if down {
-    y = yprevious;
-    state = exitstate;
-    audio_stop_sound (aJump);
-    audio_play_sound (aExit, 4, false);
-}
+            <string>///take damage
+ takedamage()
 </string>
           </argument>
         </arguments>
@@ -161,21 +128,88 @@ if aboveenemy &amp;&amp; (falling || state == ledge_grab_state) {
     audio_play_sound (aStep, 6, false);
 }else{
     //take damage
-    if state != hurtstate {
-        audio_emitter_pitch (audio_em, 1.6);
-        audio_emitter_gain (audio_em, 1.4);
-        audio_play_sound_on (audio_em, aOuch, false, 8);
-        
-        image_blend = make_color_rgb (220, 150, 150);
-        vspd = -12;
-        hspd = sign (x - other.x) * 2;
-        
-        state = hurtstate;
-        move(oSolid);
-        if instance_exists (oPlayerStats) {
-            oPlayerStats.hp -= 1;
-        }
-    }
+    takedamage()
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="oSapphire">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collect Sapphire
+oPlayerStats.sapphires += 1;
+with other {
+    instance_destroy ();
+    audio_play_sound (aTink, 4, false);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="oLava">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///take damage
+ takedamage()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="oExit">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//goto next level
+if down &amp;&amp; other.visible == true {
+    y = yprevious;
+    state = exitstate;
+    audio_stop_sound (aJump);
+    audio_play_sound (aExit, 4, false);
 }
 </string>
           </argument>

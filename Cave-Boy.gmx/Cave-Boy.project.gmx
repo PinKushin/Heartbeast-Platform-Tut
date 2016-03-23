@@ -14,6 +14,7 @@
     <sound>sound\aStep</sound>
     <sound>sound\aTink</sound>
     <sound>sound\aTrackOne</sound>
+    <sound>sound\aBoss</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Player">
@@ -69,6 +70,7 @@
       <script>scripts\horizontalmovebounce.gml</script>
       <script>scripts\applyfriction.gml</script>
       <script>scripts\getinput.gml</script>
+      <script>scripts\takedamage.gml</script>
     </scripts>
     <scripts name="Player States">
       <script>scripts\move_state.gml</script>
@@ -87,6 +89,13 @@
     <scripts name="Spider Scripts">
       <script>scripts\spideridle.gml</script>
       <script>scripts\spiderjump.gml</script>
+    </scripts>
+    <scripts name="Boss States">
+      <script>scripts\bossidlestate.gml</script>
+      <script>scripts\bossliftstate.gml</script>
+      <script>scripts\bosschasestate.gml</script>
+      <script>scripts\bosssmashstate.gml</script>
+      <script>scripts\bossstallstate.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -113,10 +122,14 @@
       <object>objects\oSnake</object>
       <object>objects\oBat</object>
       <object>objects\oSpider</object>
+      <objects name="Boss">
+        <object>objects\oBoss</object>
+      </objects>
     </objects>
     <objects name="FX">
       <object>objects\oBlood</object>
       <object>objects\oSapphireChunk</object>
+      <object>objects\oFirebubble</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -127,6 +140,7 @@
     <room>rooms\rThree</room>
     <room>rooms\rFour</room>
     <room>rooms\rFive</room>
+    <room>rooms\rBoss</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

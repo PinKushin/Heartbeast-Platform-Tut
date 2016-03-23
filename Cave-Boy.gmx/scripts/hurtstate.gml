@@ -19,6 +19,14 @@ if hspd == 0 && vspd == 0 {
     image_blend = c_white;
     state = move_state;
     if oPlayerStats.hp <= 0 {
-        game_restart()
+        oPlayerStats.sapphires = 0;
+        oPlayerStats.hp = oPlayerStats.maxhp;
+        if  audio_is_playing (aBoss) {
+            audio_stop_sound (aBoss);
+        }
+        if  audio_is_playing (aTrackOne) {
+            audio_stop_sound (aTrackOne);
+        }
+        room_restart()
     }
 }
